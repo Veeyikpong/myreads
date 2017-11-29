@@ -4,6 +4,7 @@ import './App.css'
 import * as BooksAPI from './BooksAPI'
 import SearchBooks from './SearchBooks'
 import Shelf from './Shelf'
+import Footer from './Footer'
 import {Route} from 'react-router-dom'
 import {Link} from 'react-router-dom'
 
@@ -121,9 +122,6 @@ class BooksApp extends React.Component {
             <div className="open-search">
             <Link to="/search" className = "open-search">Add Contact</Link>
             </div>
-            <footer className="footer">
-              <small>&copy; Developed by Pong Vee Yik @ Udacity React Programme</small>
-            </footer>
           </div>
         )}
         />
@@ -136,6 +134,7 @@ class BooksApp extends React.Component {
           />
         )}
         />
+        <Footer/>
         </div>
     )
   }

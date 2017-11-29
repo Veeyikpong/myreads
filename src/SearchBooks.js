@@ -9,6 +9,10 @@ class ListBooks extends Component{
     onSearchBook: PropTypes.func.isRequired
   }
 
+  openLink(){
+      window.open('http://google.com');
+  }
+
   render(){
     const {books, onUpdateBook, onSearchBook, searching} = this.props;
 
@@ -31,7 +35,11 @@ class ListBooks extends Component{
                 <li key = {book.id}>
                   <div className="book">
                     <div className="book-top">
-                        {book.imageLinks && <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}></div>}
+                      {book.imageLinks &&
+                        <Link target="_blank" to ={book.previewLink}>
+                          <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
+                        </Link>
+                      }
                       <div className="book-shelf-changer">
                         <select value={book.shelf? book.shelf:'none'} onChange={(event) => onUpdateBook(book, event.target.value)}>
                           <option value="none" disabled>Move to...</option>
