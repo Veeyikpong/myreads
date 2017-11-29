@@ -15,7 +15,9 @@ npm install --save react-router-dom
 create-react-app myreads
 ```
 *Wait for installation*
+
 2. Go into the 'myreads' folder on your terminal
+
 3. Clone the project from this repository (https://github.com/Veeyikpong/myreads.git), using the following instructions:
 ```js
 git init
@@ -26,6 +28,7 @@ git checkout origin/master -ft
 
 ### Start project 
 1. Navigate to myreads folder in terminal
+
 2. Start the project with the following command:
 ```js 
 npm start 
