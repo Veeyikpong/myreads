@@ -1,5 +1,5 @@
-﻿# MyReads Project
-This is MyReads Project developed by Pong Vee Yik @ Udacity React Programme.
+﻿# MyReads 
+This is MyReads Project developed by PONG VEE YIK @ Udacity React Programme.
 
 ## How to launch the project
 ### Installation
@@ -20,18 +20,28 @@ npm start
 
 ## Project Specifications
 ### Main Page
+
 ✓ 3 Shelves for books, 'Currently Reading', 'Want to Read', and 'Read'
+
 ✓ Books can be moved between shelves. The control is tied to each book instance
+
 ✓ When the browser / page is refreshed, same information is displayed
+
 ✓ Contains a button (Floating add button) to link to search page 
+
 ✓ Loading screen is shown during initialization / book update
 
 ### Search page
 ✓ User can type into the search field, books that match the query are displayed on the page
+
 ✓ A spinner will be shown during the searching process at the end of the search bar
+
 ✓ Search results on the search page allow the user to select “currently reading”, “want to read”, or “read” to place the book in a certain shelf.
+
 ✓ When an item is categorized on the search page, and the user navigates to the main page, it appears on that shelf in the main page.
+
 ✓ Contains a back button (in the search bar) for user to navigate back to main page 
+
 ✓ If no book can be found, 'No record found' will be displayed
 
 ## Project files
