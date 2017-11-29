@@ -2,14 +2,21 @@ import React from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
 import * as BooksAPI from './BooksAPI'
+import ListBooks from './ListBooks'
 import SearchBooks from './SearchBooks'
-import Shelf from './Shelf'
 import Footer from './Footer'
 import {Route} from 'react-router-dom'
-import {Link} from 'react-router-dom'
 
 class BooksApp extends React.Component {
 
+  state = {
+    books : [], //current books on shelves
+    searchBooks : [], //search book result
+    query: '', //search book query
+    loading: false, //determine loading or not
+    searching: false //determine searching or not
+  }
+  
   startLoading(){
       this.setState({loading:true});
   }
@@ -36,12 +43,13 @@ class BooksApp extends React.Component {
 
   searchBook = (query) => {
     this.startSearching();
+    this.setState({ query : query.trim()})
     BooksAPI.search(query,20).then((searchBooks)=>{
       let books = this.state.books;
       if(searchBooks && searchBooks.length>0){
         searchBooks.forEach( function (book) {
           let index = books.findIndex(b => b.id === book.id);
-          if(index > 0) {
+          if(index >= 0) {
             book.shelf = books[index].shelf;
           }
         });
@@ -81,48 +89,15 @@ class BooksApp extends React.Component {
     })
   }
 
-  state = {
-    books : [],
-    searchBooks : [],
-    /**
-     * TODO: Instead of using this state variable to keep track of which page
-     * we're on, use the URL in the browser's address bar. This will ensure that
-     * users can use the browser's back and forward buttons to navigate between
-     * pages, as well as provide a good URL they can bookmark and share.
-     */
-    loading: false,
-    searching: false,
-    showSearchPage: false
-  }
-
   render() {
     return (
       <div className="app">
         <Route exact path = "/" render = {() => (
-          <div>
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            {this.state.loading && (<div className="loading"/>)}
-            <Shelf
-              title="Currently Reading"
-              books={this.state.books.filter((book)=>book.shelf==="currentlyReading")}
-              onUpdateBook={this.updateBook}
-              loading = {this.state.loading}/>
-            <Shelf
-              title="Want to Read"
-              books={this.state.books.filter((book)=>book.shelf==="wantToRead")}
-              onUpdateBook={this.updateBook}
-              loading = {this.state.loading}/>
-            <Shelf
-              title="Read"
-              books={this.state.books.filter((book)=>book.shelf==="read")}
-              onUpdateBook={this.updateBook}
-              />
-            <div className="open-search">
-            <Link to="/search" className = "open-search">Add Contact</Link>
-            </div>
-          </div>
+          <ListBooks
+            books = {this.state.books}
+            loading = {this.state.loading}
+            onUpdateBook = {this.updateBook}
+          />
         )}
         />
         <Route path = "/search" render = {() => (
@@ -131,6 +106,7 @@ class BooksApp extends React.Component {
             onSearchBook = {this.searchBook}
             onUpdateBook = {this.updateBook}
             searching = {this.state.searching}
+            query = {this.state.query}
           />
         )}
         />
