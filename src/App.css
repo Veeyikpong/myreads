@@ -184,7 +184,7 @@ body, .app {
   height: 100%;
   width: 100%;
   text-align: center;
-  background-image: url('./icons/searching.gif');
+  background-image: url('./icons/loading.gif');
   background-position: center;
   background-repeat: no-repeat;
   background-color: grey;
@@ -197,7 +197,7 @@ body, .app {
   width: 50px;
   height: 53px;
   background: white;
-  background-image: url('./icons/searching.gif');
+  background-image: url('./icons/loading.gif');
   background-position: center;
   background-repeat: no-repeat;
   background-size: 40px;
