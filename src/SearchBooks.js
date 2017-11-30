@@ -17,10 +17,6 @@ class ListBooks extends Component{
     this.setState({ query : query.trim()})
   }
 
-  openLink(){
-      window.open('http://google.com');
-  }
-
   render(){
     const {books, onUpdateBook, onSearchBook, searching} = this.props;
     const {query} = this.props;
@@ -51,8 +47,7 @@ class ListBooks extends Component{
                     {book.imageLinks &&
                       <Link target="_blank" to ={book.previewLink}>
                         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
-                      </Link>
-                    }
+                      </Link>}
                     <div className="book-shelf-changer">
                       <select value={book.shelf? book.shelf:'none'} onChange={(event) => onUpdateBook(book, event.target.value)}>
                         <option value="none" disabled>Move to...</option>
@@ -71,7 +66,7 @@ class ListBooks extends Component{
               </li>
             ))}
             </ol>
-            {(books == null || books.length==null) && (<p className="norecord"> No record found </p>)}
+            {(books == null || books.length==null) && (<p className="no-record"> No record found </p>)}
           </div>
         </div>
       </div>

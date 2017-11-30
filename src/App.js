@@ -1,5 +1,4 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
 import './App.css'
 import * as BooksAPI from './BooksAPI'
 import ListBooks from './ListBooks'
@@ -16,19 +15,23 @@ class BooksApp extends React.Component {
     loading: false, //determine loading or not
     searching: false //determine searching or not
   }
-  
+
+  //to show loading screen
   startLoading(){
       this.setState({loading:true});
   }
 
+  //to hide loading screen
   stopLoading(){
       this.setState({loading:false})
   }
 
+  //to show searching progress in the search bar
   startSearching(){
       this.setState({searching:true});
   }
 
+  //to hide searching progress in the search bar
   stopSearching(){
       this.setState({searching:false})
   }
@@ -46,9 +49,13 @@ class BooksApp extends React.Component {
     this.setState({ query : query.trim()})
     BooksAPI.search(query,20).then((searchBooks)=>{
       let books = this.state.books;
+
+      //compare books, if books are on shelves, assign the correct shelf to the search result
       if(searchBooks && searchBooks.length>0){
         searchBooks.forEach( function (book) {
           let index = books.findIndex(b => b.id === book.id);
+
+          //if found
           if(index >= 0) {
             book.shelf = books[index].shelf;
           }
@@ -69,14 +76,18 @@ class BooksApp extends React.Component {
 
       if(updatedBooks && updatedBooks.length>0){
         let index = this.state.searchBooks.findIndex(b => b.id === book.id)
-        if(index!==-1){
+
+        //if found
+        if(index>=0){
           updatedBooks[index] = book;
         }
       }
 
       if(books && books.length>0){
         let index = this.state.books.findIndex(b => b.id === book.id)
-        if(index!==-1){
+
+        //if found
+        if(index>=0){
           books[index] = book;
         }else{
           books.push(book)
@@ -111,7 +122,7 @@ class BooksApp extends React.Component {
         )}
         />
         <Footer/>
-        </div>
+      </div>
     )
   }
 }

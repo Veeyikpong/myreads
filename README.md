@@ -45,7 +45,9 @@ npm start
 
 ✓ Contains a button (Floating add button) to link to search page 
 
-✓ Loading screen is shown during initialization / book update
+✓ Loading screen is shown during initialization / book update Loading screen is shown during initialization / book update
+
+✓ Click on the book will navigate to a preview link
 
 ### Search page
 ✓ User can type into the search field, books that match the query are displayed on the page
@@ -59,6 +61,8 @@ npm start
 ✓ Contains a back button (in the search bar) for user to navigate back to main page 
 
 ✓ If no book can be found, 'No record found' will be displayed
+
+✓ Click on the book will navigate to a preview link
 
 ## Project files
 ```bash

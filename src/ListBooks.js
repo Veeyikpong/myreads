@@ -12,6 +12,7 @@ class ListBooks extends Component{
 
   render(){
     const {books, loading, onUpdateBook} = this.props;
+
     return(
       <div>
         <div className="list-books-title">
@@ -29,10 +30,9 @@ class ListBooks extends Component{
         <Shelf
           title="Read"
           books={books.filter((book)=>book.shelf==="read")}
-          onUpdateBook={onUpdateBook}
-          />
+          onUpdateBook={onUpdateBook}/>
         <div className="open-search">
-        <Link to="/search" className = "open-search">Add Contact</Link>
+          <Link to="/search" className = "open-search">Add Contact</Link>
         </div>
       </div>
     )
